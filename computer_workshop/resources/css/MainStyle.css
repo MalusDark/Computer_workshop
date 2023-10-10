@@ -1,0 +1,40 @@
+@media only screen and (max-device-width: 992px){
+    nav.navbar .dropdown:hover .dropdown-menu{
+        display: none;
+    }
+}
+nav.navbar .dropdown:hover > .dropdown-menu {
+    display: block;
+}
+a.contact-phone {
+    color: black;
+    text-decoration: none;
+}
+a.contact-mail {
+    color: black;
+    text-decoration: none;
+}
+.btn btn-secondary dropdown-toggle {
+    padding: 0;
+    border: none;
+    background: none;
+}
+body {
+    font-size: calc(.9em + .0375 * ((100vw - 20em)/ 40));
+    font-family: 'Open Sans';
+    text-align: inherit;
+}
+.articles{
+    justify-content: right;
+}
+.dropdown{
+    justify-content: left;
+}
+.navbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input[type=text] {
+  padding: 10px;
+}

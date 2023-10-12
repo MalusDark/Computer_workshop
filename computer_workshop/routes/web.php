@@ -13,8 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/cards', 'CardsController@mainCardsPage');
+Route::get('/', 'CardsController@mainCardsPage');

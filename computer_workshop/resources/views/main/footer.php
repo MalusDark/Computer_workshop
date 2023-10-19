@@ -34,5 +34,28 @@
                 </div>
             </div>
         </div>
+        <div class="col-2 p-4 mb-2" style="padding: 0">
+        </div>
+        <div class="col-2 p-4 mb-2" style="padding: 0">
+            Связь с нами:
+            <div class="row">
+                <div class="col-6">
+                    <img width="100%" alt="Responsive image" src="img/skype.png" >
+                    <img width="100%" alt="Responsive image" src="img/vk.png" >
+                    <img width="100%" alt="Responsive image" src="img/mail.png" >
+                </div>
+                <div class="col-6">
+                    <p style="margin-top: 20px">
+                        Skype
+                    </p>
+                    <p style="margin-top: 40px">
+                        Страница VK
+                    </p>
+                    <p style="margin-top: 40px">
+                        Почта
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

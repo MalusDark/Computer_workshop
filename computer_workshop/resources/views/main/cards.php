@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\serviceList;
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -15,6 +18,7 @@ session_start();
 <div class="container-fluid text-white" style="margin-top: 150px; margin-bottom: 150px; background-color: #000000">
     <div class="row">
         Основная часть
+        <?php echo $text=serviceList::getList(); ?>
     </div>
 </div>
 <?php include "footer.php"; ?>

@@ -17,8 +17,29 @@ session_start();
 
 <div class="container-fluid text-white" style="margin-top: 150px; margin-bottom: 150px; background-color: #000000">
     <div class="row">
-        Основная часть
-        <?php echo $text=serviceList::getList(); ?>
+
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+            <?php
+            for($i=1;$i <=serviceList::getNumber();$i++)
+            {
+                $item=serviceList::getList($i);
+                echo
+                    "<div class=\"card\" style=\"width: 18rem; background-color: darkorange\">
+                    <img src=\"img/".$item->image."\" class=\"card-img-top\" alt=\"...\">
+                    <div class=\"card-body\">
+                        <h5 class=\"card-title\">".$item->serviceName."</h5>
+                        <p class=\"card-text\">".$item->mainInfo."</p>
+                        <a href=\"#\" class=\"btn btn-primary\" style='background-color: #000000' \">".$item->price." рублей</a>
+                    </div>
+                </div>";
+            }
+            ?>
+        </div>
     </div>
 </div>
 <?php include "footer.php"; ?>

@@ -16,8 +16,10 @@ return new class extends Migration
                 $table->string('mainInfo');
                 $table->text('allInfo');
                 $table->string('image');
+                $table->string('avto');
+                $table->string('type');
+                $table->integer('time');
                 $table->decimal('price');
-                $table->ForeignId('categoryId')->nullable()->index()->constrained('service_lists');
 
                 $table->timestamps();
             });

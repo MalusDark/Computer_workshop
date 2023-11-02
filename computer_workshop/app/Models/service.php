@@ -12,5 +12,8 @@ class service extends Model
     public string $mainInfo;
     public string $allInfo;
     public string $image;
+    public string $avto;
+    public string $type;
+    public int $time;
     public int $price;
 }

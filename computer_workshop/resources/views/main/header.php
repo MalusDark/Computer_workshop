@@ -8,13 +8,13 @@
         <div class="col-9">
         </div>
         <div class="col-1" style="background-color: darkorange;">
-            <img width="100%" alt="Responsive image" src="img/buy.png" >
+            <img alt="Responsive image" src="img/buy.png" >
         </div>
         <div class="col-1" style="background-color: darkorange;">
-            <img width="100%" alt="Responsive image" src="img/account.png" >
+            <img alt="Responsive image" src="img/account.png" >
         </div>
         <div class="col-1" style="background-color: darkorange;">
-            <img width="100%" alt="Responsive image" src="img/logout.png" >
+            <img alt="Responsive image" src="img/logout.png" >
         </div>
     </div>
     <div class="row" style="background-color: darkorange;">

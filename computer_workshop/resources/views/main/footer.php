@@ -40,9 +40,9 @@
             Связь с нами:
             <div class="row">
                 <div class="col-6">
-                    <img width="100%" alt="Responsive image" src="img/skype.png" >
-                    <img width="100%" alt="Responsive image" src="img/vk.png" >
-                    <img width="100%" alt="Responsive image" src="img/mail.png" >
+                    <img alt="Responsive image" src="img/skype.png" >
+                    <img alt="Responsive image" src="img/vk.png" >
+                    <img alt="Responsive image" src="img/mail.png" >
                 </div>
                 <div class="col-6">
                     <p style="margin-top: 20px">

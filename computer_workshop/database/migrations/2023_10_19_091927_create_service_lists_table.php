@@ -11,11 +11,10 @@ return new class extends Migration
         if(!Schema::hasTable('users')) {
             Schema::create('service_lists', function (Blueprint $table) {
                 $table->id();
-
-                $table->integer('categoryId');
                 $table->string('carName');
                 $table->string('serviceType');
-
+                $table->integer('time');
+                $table->decimal('price');
                 $table->timestamps();
             });
         }

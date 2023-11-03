@@ -12,14 +12,14 @@ class serviceList extends Model
     public string $serviceType;
     public int $time;
     public int $price;
-    public static function getNumber()
+    public static function getNumber(string $name)
     {
         $hostname = "localhost";
         $username = "admin";
         $password = "password";
         $databaseName = "computer_workshop";
         $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-        $res = $connect->query("SELECT COUNT(*) FROM services");
+        $res = $connect->query("SELECT COUNT(*) FROM services WHERE services.serviceName LIKE '%$name%'");
         $row = $res->fetch_row();
         $count = $row[0];
         return $count;

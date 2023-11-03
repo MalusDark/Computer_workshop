@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\serviceList;
-
+error_reporting(0);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -65,9 +65,9 @@ session_start();
                 {
                     $name = $_GET['name'];
                 }
-                if(serviceList::getNumber()>0)
+                if(serviceList::getNumber($name)>0)
                 {
-                    for($i=1;$i <=serviceList::getNumber();$i++)
+                    for($i=1;$i <=serviceList::getNumber($name);$i++)
                     {
                         unset($item);
                         $item=serviceList::FilterList($min,$max,$name,$i);

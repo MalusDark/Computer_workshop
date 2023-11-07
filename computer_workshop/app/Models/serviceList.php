@@ -12,27 +12,47 @@ class serviceList extends Model
     public string $serviceType;
     public int $time;
     public int $price;
-    public static function getNumber(string $name)
+    public static function getCount(int $min,int $max,string $name, int $timemin, int $timemax, string $car)
     {
         $hostname = "localhost";
         $username = "admin";
         $password = "password";
         $databaseName = "computer_workshop";
         $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-        $res = $connect->query("SELECT COUNT(*) FROM services WHERE services.serviceName LIKE '%$name%'");
+        $res = $connect->query("SELECT DISTINCT COUNT(*) FROM services WHERE services.serviceName LIKE '%$name%'and services.price >= '$min' and services.price < '$max' and services.time >= '$timemin' and services.time < '$timemax' and services.avto LIKE '%$car%'");
         $row = $res->fetch_row();
         $count = $row[0];
         return $count;
     }
-
-    public static function FilterList(int $min, int $max, string $name, int $i)
+    public static function getNumber(int $i, int $min,int $max,string $name, int $timemin, int $timemax,string $car)
     {
         $hostname = "localhost";
         $username = "admin";
         $password = "password";
         $databaseName = "computer_workshop";
         $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-        $res = $connect->query("SELECT serviceName, mainInfo, allInfo, price, image FROM services WHERE services.id = '$i' AND services.serviceName LIKE '%$name%'");
+        $res = $connect->query("SELECT id FROM services WHERE services.serviceName LIKE '%$name%'and services.price >= '$min' and services.price < '$max' and services.time >= '$timemin' and services.time < '$timemax' and services.avto LIKE '%$car%'");
+        if ($res->num_rows > 0)
+        {
+            for($j=0; $j <=$i; $j++)
+            {
+                $row = $res->fetch_assoc();
+                $number = $row["id"];
+            }
+            return $number;
+        }
+        $connect->close();
+        return "Error";
+    }
+
+    public static function FilterList(int $number)
+    {
+        $hostname = "localhost";
+        $username = "admin";
+        $password = "password";
+        $databaseName = "computer_workshop";
+        $connect = mysqli_connect($hostname, $username, $password, $databaseName);
+        $res = $connect->query("SELECT serviceName, mainInfo, allInfo, price, image FROM services WHERE services.id = '$number'");
 
         if ($res->num_rows > 0)
         {

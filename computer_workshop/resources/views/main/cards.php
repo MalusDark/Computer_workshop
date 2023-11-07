@@ -14,7 +14,7 @@ session_start();
 </head>
 <?php include "header.php"; ?>
 <body>
-    <div class="container-fluid text-white" style="margin-top: 150px; margin-bottom: 150px; background-color: #000000">
+    <div class="container-fluid text-white" style="margin-top: 150px; margin-bottom: 150px; background-color: #A3A3A3">
         <div class="row">
 
         </div>
@@ -43,6 +43,29 @@ session_start();
                         else echo ' '
                         ?>" size="5">
                         <br>
+                        <span style="text-align: center">Длительность от</span>
+                        <br>
+                        <input class="form-control" type="number" name="time_min" placeholder="От" value="<?php
+                        if (isset($_GET['time_min']))
+                            echo $_GET['time_min'];
+                        else echo 30
+                        ?>" size="5">
+                        <br>
+                        <span style="text-align: center">Длительность до</span>
+                        <br>
+                        <input class="form-control" type="number" name="time_max" placeholder="До" value="<?php
+                        if (isset($_GET['time_max']))
+                            echo $_GET['time_max'];
+                        else echo 720
+                        ?>" size="5">
+                        <br>
+                        <span style="text-align: center">По автомобилю</span>
+                        <br>
+                        <input class="form-control" type="text" name="car" placeholder=" " <?php
+                        if (isset($_GET['car']))
+                            echo $_GET['car'];
+                        ?>" size="5">
+                        <br>
                         <input type="submit" name="filter" form="search" value="Принять">
                         <input type="reset" form="search" onClick='location.href="/"' value="Сбросить">
                     </form>
@@ -65,19 +88,44 @@ session_start();
                 {
                     $name = $_GET['name'];
                 }
-                if(serviceList::getNumber($name)>0)
+                if (isset($_GET['car']))
                 {
-                    for($i=1;$i <=serviceList::getNumber($name);$i++)
+                    $car = $_GET['car'];
+                }
+                else
+                {
+                    $car = '';
+                }
+                if (isset($_GET['time_min']))
+                {
+                    $timeMin =  $_GET['time_min'];
+                }
+                else
+                {
+                    $timeMin = 0;
+                }
+                if (isset($_GET['time_max']))
+                {
+                    $timeMax =  $_GET['time_max'];
+                }
+                else
+                {
+                    $timeMax = 720;
+                }
+                if(serviceList::getCount($min,$max,$name,$timeMin,$timeMax,$car)>0)
+                {
+                    for($i=0;$i <serviceList::getCount($min,$max,$name,$timeMin,$timeMax,$car);$i++)
                     {
                         unset($item);
-                        $item=serviceList::FilterList($min,$max,$name,$i);
+                        (int)$number = serviceList::getNumber($i,$min,$max,$name,$timeMin,$timeMax,$car);
+                        $item=serviceList::FilterList($number);
                         echo
-                            "<div class=\"card\" style=\"margin: 10px; width: 18rem; background-color: darkorange\">
+                            "<div class=\"card\" style=\"margin: 10px; width: 18rem; background-color: #D9D9D9\">
                                 <img src=\"img/".$item->image."\" class=\"card-img-top\" alt=\"...\">
-                                <div class=\"card-body\">
+                                <div class=\"card-body\" style=\"сolor: #000000\">
                                      <h5 class=\"card-title\">".$item->serviceName."</h5>
                                      <p class=\"card-text\">".$item->mainInfo."</p>
-                                     <a href=\"#\" class=\"btn btn-primary\" style='background-color: #000000' \">".$item->price." рублей</a>
+                                     <a href=\"#\" class=\"btn btn-primary\" style='background-color: #9DABB7' \">".$item->price." рублей</a>
                                 </div>
                             </div>";
                     }
